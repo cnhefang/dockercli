@@ -1,4 +1,4 @@
-FROM docker:19.03.12
+FROM docker:19.03.12-dind
    # Install AWS CLI
 RUN export DEBIAN_FRONTEND=noninteractive
 #RUN apk update -q
