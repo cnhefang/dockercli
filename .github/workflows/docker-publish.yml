@@ -5,15 +5,18 @@ name: Docker
 # separate terms of service, privacy policy, and support
 # documentation.
 
+# on:
+#   schedule:
+#     - cron: '28 8 * * *'
+#   push:
+#     branches: [ master ]
+#     # Publish semver tags as releases.
+#     tags: [ 'v*.*.*' ]
+#   pull_request:
+#     branches: [ master ]
 on:
-  schedule:
-    - cron: '28 8 * * *'
-  push:
-    branches: [ master ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [published]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -66,5 +69,5 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }},"latest"
           labels: ${{ steps.meta.outputs.labels }}
