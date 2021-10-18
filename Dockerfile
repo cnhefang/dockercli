@@ -2,7 +2,7 @@ FROM docker:19.03.12-dind
    # Install AWS CLI
 RUN export DEBIAN_FRONTEND=noninteractive
 #RUN apk update -q
-RUN apk add --update git curl unzip bash python python-dev py-pip
+RUN apk add --update git curl unzip bash python2 python2-dev py-pip
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 RUN unzip awscli-bundle.zip
 RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
